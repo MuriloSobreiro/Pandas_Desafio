@@ -1,11 +1,10 @@
 import pandas as pd
-import os
 import matplotlib.pyplot as plt
 
 separador = "," #Separador dos dados csv
 dec = "." #Separador decimal dos dados numéricos
 
-#Importando o arquivo que se encontram na mesma pasta do script
+#Importando os arquivos que se encontram na mesma pasta do script
 dadosEmpresa = pd.read_csv("DadosEmpresa.csv", sep = separador, decimal = dec)
 dadosEndereco = pd.read_csv("DadosEndereco.csv", sep = separador, decimal = dec)
 
@@ -18,7 +17,7 @@ opSimples.to_csv("opPeloSimples.csv",sep =",", index = False)
 
 #Gere outro arquivo csv que contenha todas as informações das empresas que 
 # são de Curitiba ou de Londrina e que tenham capital social maior que 5000 reais.
-#Vamos juntar as duas tabela para facilitar o trabalho com os dados
+#Vamos juntar as duas tabelas para facilitar o trabalho com os dados
 dadosCompletos = pd.merge(dadosEmpresa,dadosEndereco, on = "cnpj")
 
 #Selecionando os dados
@@ -41,11 +40,11 @@ plt.title("Empresas por bairro de Curitiba")
 ys = dadosEmpresa[(dadosEmpresa.opcao_pelo_simples == "SIM")][["opcao_pelo_simples","capital_social"]]
 yn = dadosEmpresa[(dadosEmpresa.opcao_pelo_simples == "NAO")][["opcao_pelo_simples","capital_social"]]
 
-#Calculo das média de capital social para as empresas
+#Calculo das médias de capital social para as empresas
 print(ys.mean(numeric_only= True)) #44434.725849
 print(yn.mean(numeric_only= True)) #702432.535452
 
-#Criando o gráfico da caixas para visualização
+#Criando o gráfico de caixas para a visualização dos dados
 data = [ys.capital_social,yn.capital_social]
 fig, ax = plt.subplots()
 ax.set_title('Comparação entre opção pelo simples e capital social')
