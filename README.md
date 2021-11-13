@@ -1,2 +1,2 @@
 # Pandas_Desafio
-Programa feito com pandas para filtragem e análise de dados
+Programa feito com a biblioteca pandas para filtragem e análise de dados
